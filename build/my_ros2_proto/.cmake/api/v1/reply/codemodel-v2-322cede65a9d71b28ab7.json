@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-45534b9ed557892dbc4b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "my_ros2_proto__py",
+					"jsonFile" : "directory-my_ros2_proto__py-8c01597b18dd37707e19.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/my_ros2_proto__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "my_ros2_proto",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_my_ros2_proto_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_my_ros2_proto_egg-a90de6366e6cabf4edd2.json",
+					"name" : "ament_cmake_python_build_my_ros2_proto_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_my_ros2_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_my_ros2_proto-b46f477b2eb9c773ef60.json",
+					"name" : "ament_cmake_python_symlink_my_ros2_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto-eddbb1d56536b7af0152.json",
+					"name" : "my_ros2_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__cpp-2cf3d02dea8d498826fb.json",
+					"name" : "my_ros2_proto__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "my_ros2_proto__py::@25e73dbb8a7527347344",
+					"jsonFile" : "target-my_ros2_proto__py-b2cdac80cccc535f93ba.json",
+					"name" : "my_ros2_proto__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_generator_c-248256f8b120d584ccd8.json",
+					"name" : "my_ros2_proto__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_generator_py-699af1bb0bfa73787b95.json",
+					"name" : "my_ros2_proto__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_c-0f31fdc7c2184ad669fc.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_c__pyext-3a979dcb06a88f38bab8.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_cpp-4bac7189cf2f6abcc3a8.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_fastrtps_c-ffc5f82bd4dda8f9d70b.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_fastrtps_c__pyext-ad971b048e4ae4017429.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_fastrtps_cpp-814c72e44c871db6201b.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_introspection_c-694a1a604afb9b116747.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_introspection_c__pyext-a2700c1ab43619dd63bd.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto__rosidl_typesupport_introspection_cpp-65f44bd7aede7231aebf.json",
+					"name" : "my_ros2_proto__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_ros2_proto_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_ros2_proto_uninstall-fb77022dbefdb4590b98.json",
+					"name" : "my_ros2_proto_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-d1ad3f5b38bd8301ab02.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto",
+		"source" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/my_ros2_proto"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

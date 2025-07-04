@@ -1,0 +1,5 @@
+fastapi==0.115.12
+uvicorn==0.34.3
+pyrealsense2==2.55.1.6486
+pyyaml==5.4.1
+requests==2.25.1

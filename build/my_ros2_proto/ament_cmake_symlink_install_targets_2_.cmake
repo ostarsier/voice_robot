@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/rosidl_generator_py/my_ros2_proto/my_ros2_proto_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" "TARGETS" "my_ros2_proto__rosidl_typesupport_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/my_ros2_proto")

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROS2 控制面板</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <h1>ROS2 控制面板</h1>
+    <p>点击按钮发送指令到后端服务：</p>
+    
+    <div class="button-container">
+        <button onclick="sendCommand('stand')">站立模式</button>
+        <button onclick="sendCommand('walk')">行走模式</button>
+        <button onclick="sendCommand('plan_mode')">挥手模式</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="sendCommand('grasp_mode')">抓话筒</button>
+        <button onclick="sendCommand('shake_hand_mode')">握手</button>
+        <button onclick="sendCommand('right_hand_back_mode')">右手回来</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="sendCommand('left_hand_mode')">左手</button>
+        <button onclick="sendCommand('left_hand_back_mode')">左手回来</button>
+    </div>
+
+    
+    <div id="status"></div>
+
+    <script>
+        async function sendCommand(value) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = "发送中...";
+            statusDiv.className = "";
+            
+            try {
+                const response = await fetch('http://localhost:8500/send_boxe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ value: value })
+                });
+                
+                const result = await response.json();
+                statusDiv.textContent = `成功发送: ${value} | 后端响应: ${JSON.stringify(result)}`;
+                statusDiv.className = "success";
+            } catch (error) {
+                statusDiv.textContent = `发送失败: ${error.message}`;
+                statusDiv.className = "error";
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

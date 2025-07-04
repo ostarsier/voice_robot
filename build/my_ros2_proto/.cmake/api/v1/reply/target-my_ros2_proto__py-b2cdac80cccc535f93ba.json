@@ -1,0 +1,79 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/my_ros2_proto__py/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "my_ros2_proto::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "my_ros2_proto__py::@25e73dbb8a7527347344",
+	"name" : "my_ros2_proto__py",
+	"paths" : 
+	{
+		"build" : "my_ros2_proto__py",
+		"source" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/my_ros2_proto__py"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/my_ros2_proto__py/CMakeFiles/my_ros2_proto__py",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/my_ros2_proto__py/CMakeFiles/my_ros2_proto__py.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/zy/X1/my_robot_ws/my_robot_ws/src/my_robot_interaction/voice_robot/build/my_ros2_proto/rosidl_generator_py/my_ros2_proto/_my_ros2_proto_s.ep.rosidl_typesupport_fastrtps_c.c.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}
