@@ -54,15 +54,19 @@ async def receive_command(request: Request):
 
     elif data["value"] == 'grasp_mode':
         mode = 'grasp_mode'
+    elif data["value"] == 'grasp2_mode':
+        mode = 'grasp2_mode'
     elif data["value"] == 'shake_hand_mode':
         mode = 'shake_hand_mode'
-    elif data["value"] == 'right_hand_back_mode':
-        mode = 'right_hand_back_mode'
 
     elif data["value"] == 'left_hand_mode':
         mode = 'left_hand_mode'
     elif data["value"] == 'left_hand_back_mode':
         mode = 'left_hand_back_mode'
+
+
+    elif data["value"] == 'hand_back_mode':
+        mode = 'hand_back_mode'
     else:
         raise HTTPException(status_code=500, detail="未知模式")
 
