@@ -29,6 +29,104 @@
         button:hover {
             background-color: #45a049;
         }
+        .btn-red {
+            background-color: #f44336; /* Red */
+        }
+        .btn-red:hover {
+            background-color: #d32f2f; /* Darker Red */
+        }
+
+        .head-control-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .head-circle {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Add a pseudo-element for the visible semi-circle border */
+        .head-circle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 175px;
+            border: 3px solid #666;
+            border-bottom: none;
+            border-radius: 175px 175px 0 0;
+            box-sizing: border-box; /* ensure border is inside */
+        }
+
+        #head-indicator {
+            width: 4px;
+            height: 160px;
+            background-color: #f44336;
+            position: absolute;
+            bottom: 50%;
+            transform-origin: bottom;
+            transform: rotate(0deg);
+            transition: transform 0.4s ease-in-out;
+            border-radius: 2px;
+        }
+
+        .tick-label.clickable {
+            cursor: pointer;
+            font-weight: normal;
+            color: #333; /* Default text color */
+            padding: 5px 8px;
+            border-radius: 15px;
+            background-color: #eee; /* Default gray background */
+            border: 1px solid #ccc;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            pointer-events: auto; /* Make the label clickable again */
+        }
+        .tick-label.clickable:hover {
+            background-color: #f44336; /* Red on hover */
+            color: white;
+            border-color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .tick-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(var(--angle));
+            pointer-events: none; /* Allow mouse events to pass through */
+        }
+
+        .tick-mark {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 8px;
+            background: #aaa;
+            transform: translateX(-50%);
+        }
+
+        .tick-label {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(calc(-1 * var(--angle)));
+            font-size: 12px;
+            color: #333;
+        }
         #status {
             margin-top: 20px;
             padding: 10px;
@@ -45,7 +143,7 @@
     </style>
 </head>
 <body>
-    <h1>ROS2 控制面板</h1>
+    <h1>ROS2 手控制</h1>
     <p>点击按钮发送指令到后端服务：</p>
     
     <div class="button-container">
@@ -69,6 +167,24 @@
         <button onclick="sendCommand('hand_back_mode')">左右手回来</button>
     </div>
 
+    <h1>Http 头部控制</h1>
+    <div class="head-control-container">
+        <div class="head-circle">
+            <div id="head-indicator"></div>
+
+            <!-- Ticks and Labels -->
+            <div class="tick-container" style="--angle: 0deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(0)">0°</div></div>
+            <div class="tick-container" style="--angle: -15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(15)">15°</div></div>
+            <div class="tick-container" style="--angle: -30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(30)">30°</div></div>
+            <div class="tick-container" style="--angle: -45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(45)">45°</div></div>
+            <div class="tick-container" style="--angle: -60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(60)">60°</div></div>
+            <div class="tick-container" style="--angle: 15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-15)">-15°</div></div>
+            <div class="tick-container" style="--angle: 30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-30)">-30°</div></div>
+            <div class="tick-container" style="--angle: 45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-45)">-45°</div></div>
+            <div class="tick-container" style="--angle: 60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-60)">-60°</div></div>
+        </div>
+    </div>
+
     
     <div id="status"></div>
 
@@ -89,6 +205,36 @@
                 
                 const result = await response.json();
                 statusDiv.textContent = `成功发送: ${value} | 后端响应: ${JSON.stringify(result)}`;
+                statusDiv.className = "success";
+            } catch (error) {
+                statusDiv.textContent = `发送失败: ${error.message}`;
+                statusDiv.className = "error";
+                console.error('Error:', error);
+            }
+        }
+
+        async function moveHead(angle) {
+            const statusDiv = document.getElementById('status');
+            const indicator = document.getElementById('head-indicator');
+
+            // Visual angle mapping: 45 (left) -> -45deg, 0 (center) -> 0deg, -45 (right) -> 45deg
+            const visualAngle = -angle;
+            if (indicator) {
+                indicator.style.transform = `rotate(${visualAngle}deg)`;
+            }
+
+            statusDiv.textContent = "发送中...";
+            statusDiv.className = "";
+            
+            try {
+                const response = await fetch(`http://localhost:8085/angle/${angle}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.text();
+                statusDiv.textContent = `成功发送角度: ${angle} | 后端响应: ${result}`;
                 statusDiv.className = "success";
             } catch (error) {
                 statusDiv.textContent = `发送失败: ${error.message}`;
