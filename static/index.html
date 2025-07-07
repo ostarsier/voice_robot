@@ -92,8 +92,9 @@
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
             pointer-events: auto; /* Make the label clickable again */
         }
-        .tick-label.clickable:hover {
-            background-color: #f44336; /* Red on hover */
+        .tick-label.clickable:hover,
+        .tick-label.clickable.active {
+            background-color: #f44336; /* Red on hover or when active */
             color: white;
             border-color: #d32f2f;
             font-weight: bold;
@@ -173,15 +174,15 @@
             <div id="head-indicator"></div>
 
             <!-- Ticks and Labels -->
-            <div class="tick-container" style="--angle: 0deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(0)">0°</div></div>
-            <div class="tick-container" style="--angle: -15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(15)">15°</div></div>
-            <div class="tick-container" style="--angle: -30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(30)">30°</div></div>
-            <div class="tick-container" style="--angle: -45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(45)">45°</div></div>
-            <div class="tick-container" style="--angle: -60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(60)">60°</div></div>
-            <div class="tick-container" style="--angle: 15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-15)">-15°</div></div>
-            <div class="tick-container" style="--angle: 30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-30)">-30°</div></div>
-            <div class="tick-container" style="--angle: 45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-45)">-45°</div></div>
-            <div class="tick-container" style="--angle: 60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-60)">-60°</div></div>
+            <div class="tick-container" style="--angle: 0deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(0, this)">0°</div></div>
+            <div class="tick-container" style="--angle: -15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(15, this)">15°</div></div>
+            <div class="tick-container" style="--angle: -30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(30, this)">30°</div></div>
+            <div class="tick-container" style="--angle: -45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(45, this)">45°</div></div>
+            <div class="tick-container" style="--angle: -60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(60, this)">60°</div></div>
+            <div class="tick-container" style="--angle: 15deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-15, this)">-15°</div></div>
+            <div class="tick-container" style="--angle: 30deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-30, this)">-30°</div></div>
+            <div class="tick-container" style="--angle: 45deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-45, this)">-45°</div></div>
+            <div class="tick-container" style="--angle: 60deg;"><div class="tick-mark"></div><div class="tick-label clickable" onclick="moveHead(-60, this)">-60°</div></div>
         </div>
     </div>
 
@@ -213,9 +214,16 @@
             }
         }
 
-        async function moveHead(angle) {
+        async function moveHead(angle, clickedElement) {
             const statusDiv = document.getElementById('status');
             const indicator = document.getElementById('head-indicator');
+
+            // Update active state for buttons
+            const allButtons = document.querySelectorAll('.tick-label.clickable');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            }
 
             // Visual angle mapping: 45 (left) -> -45deg, 0 (center) -> 0deg, -45 (right) -> 45deg
             const visualAngle = -angle;
