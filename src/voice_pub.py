@@ -43,33 +43,7 @@ async def read_root():
 async def receive_command(request: Request):
     data = await request.json()
     print(f"收到前端请求: {data}")
-    mode = 'zero_mode'
-    if data["value"] == 'stand':    
-        mode = 'stand_mode'
-    elif data["value"] == 'walk':
-        mode = 'walk_mode'
-    elif data["value"] == 'plan_mode':
-        mode = 'plan_mode'
-
-
-    elif data["value"] == 'grasp_mode':
-        mode = 'grasp_mode'
-    elif data["value"] == 'grasp2_mode':
-        mode = 'grasp2_mode'
-    elif data["value"] == 'shake_hand_mode':
-        mode = 'shake_hand_mode'
-
-    elif data["value"] == 'left_hand_mode':
-        mode = 'left_hand_mode'
-    elif data["value"] == 'left_hand_back_mode':
-        mode = 'left_hand_back_mode'
-
-
-    elif data["value"] == 'hand_back_mode':
-        mode = 'hand_back_mode'
-    else:
-        raise HTTPException(status_code=500, detail="未知模式")
-
+    mode = data["value"]
 
     publisher = ros_node.create_publisher(Float32, mode, 10)
     try:
