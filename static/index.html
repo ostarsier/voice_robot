@@ -188,6 +188,14 @@
         </div>
     </div>
 
+    <h1>Http 灵巧手控制</h1>
+    <div class="button-container">
+        <button onclick="sendHandCommand('/predef/right_hand/open')">打开</button>
+        <button onclick="sendHandCommand('/predef/right_hand/close')">关闭</button>
+        <button onclick="sendHandCommand('/predef/right_hand/default')">默认姿势</button>
+        <button onclick="sendHandCommand('/finger_dance')">手指舞</button>
+        <button onclick="sendHandCommand('/game')">剪刀石头布</button>
+    </div>
     
     <div id="status"></div>
 
@@ -245,6 +253,28 @@
                 
                 const result = await response.text();
                 statusDiv.textContent = `成功发送角度: ${angle} | 后端响应: ${result}`;
+                statusDiv.className = "success";
+            } catch (error) {
+                statusDiv.textContent = `发送失败: ${error.message}`;
+                statusDiv.className = "error";
+                console.error('Error:', error);
+            }
+        }
+
+        async function sendHandCommand(path) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = "发送中...";
+            statusDiv.className = "";
+            
+            try {
+                const response = await fetch(`http://localhost:8000${path}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.text();
+                statusDiv.textContent = `成功发送指令: ${path} | 后端响应: ${result}`;
                 statusDiv.className = "success";
             } catch (error) {
                 statusDiv.textContent = `发送失败: ${error.message}`;
